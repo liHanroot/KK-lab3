@@ -6,6 +6,7 @@ import com.bmstu.han.pojo.Production;
 import com.bmstu.han.pojo.Symbol;
 import com.bmstu.han.service.EmptyLanguageService;
 import com.bmstu.han.service.RecursionService;
+import com.bmstu.han.service.RecursiveDescentService;
 import com.bmstu.han.service.UnreachableSymbolsService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +19,7 @@ import java.util.Objects;
 
 @Slf4j
 public class GrammarController {
+
     //处理-删除左递归(目前只支持删除直接左递归)
     public static void handlingLeftRecursion(String filenameJson) {
         Grammar grammar = null;
@@ -41,6 +43,8 @@ public class GrammarController {
         log.info("Удалить левую рекурсию(消除左递归)");
 
         grammar.print();
+
+        RecursiveDescentService.validationExpression();
 
     }
 
